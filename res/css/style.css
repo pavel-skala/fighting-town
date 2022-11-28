@@ -1,0 +1,215 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+#town {
+  background: url(../img/town.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: block;
+  height: 100%;
+}
+#battleField {
+  background: url(../img/battlefield01.jpg);
+  background-repeat: no-repeat;
+  display: none;
+  background-size: cover;
+  height: 100%;
+}
+#shop {
+  background: url(../img/shop.png);
+  background-repeat: no-repeat;
+  display: none;
+  background-size: cover;
+  height: 100%;
+}
+#house {
+  background: url(../img/house03.jpg);
+  background-repeat: no-repeat;
+  display: none;
+  background-size: cover;
+  height: 100%;
+}
+#goBattle,
+#goShop,
+#goBackInShop,
+#goHouse,
+#goBackInHouse {
+  height: 100px;
+  width: 266px;
+  font-size: 50px;
+  border-radius: 25px;
+  color: white;
+  position: absolute;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition-duration: 0.5s;
+  transition-property: box-shadow;
+}
+#goBattle:hover,
+#goShop:hover,
+#goBackInShop:hover,
+#goHouse:hover,
+#goBackInHouse:hover {
+  box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.46);
+}
+#goBattle {
+  top: 10px;
+  left: 10px;
+}
+#goShop {
+  top: 550px;
+  left: 1000px;
+}
+#goBackInShop {
+  top: 10px;
+  left: 10px;
+}
+#goHouse {
+  top: 200px;
+  left: 1300px;
+}
+#goBackInHouse {
+  top: 10px;
+  left: 10px;
+}
+
+/*
+battle
+*/
+#character {
+  background: url(../img/warrior.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 180px;
+  left: 50px;
+  width: 400px;
+  height: 555px;
+}
+#enemy {
+  background: url(../img/enemy01.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 585px;
+  width: 490px;
+  position: absolute;
+  top: 100px;
+  left: 600px;
+}
+#btnAttack,
+#btnSuperAttack {
+  width: 100px;
+  position: absolute;
+  cursor: pointer;
+}
+#btnAttack {
+  top: 30px;
+  left: 400px;
+}
+#btnSuperAttack {
+  top: 30px;
+  left: 620px;
+}
+#myHealth,
+#enemyHealth {
+  position: absolute;
+  background-color: black;
+  color: rgb(255, 0, 0);
+}
+#myHealth {
+  top: 100px;
+  left: 260px;
+}
+#enemyHealth {
+  top: 100px;
+  left: 850px;
+}
+
+/*
+shop
+*/
+#btnBuyBasicAttack,
+#btnBuyHealth,
+#btnBuySuperAttack,
+#btnBuySuperPowerCouldown {
+  display: flex;
+  position: absolute;
+  cursor: pointer;
+  flex-direction: column;
+  background-color: #03a9f4;
+  color: black;
+  width: 235px;
+  border-radius: 32px;
+}
+#btnBuyBasicAttack:hover,
+#btnBuyHealth:hover,
+#btnBuySuperAttack:hover,
+#btnBuySuperPowerCouldown:hover {
+  background-color: #0590ff;
+}
+#btnBuyBasicAttack div,
+#btnBuyHealth div,
+#btnBuySuperAttack div,
+#btnBuySuperPowerCouldown div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 37px;
+  font-size: 20px;
+}
+#btnBuyBasicAttack {
+  top: 355px;
+  left: 960px;
+}
+#btnBuyHealth {
+  top: 510px;
+  left: 960px;
+}
+#btnBuySuperAttack {
+  top: 355px;
+  left: 1214px;
+}
+#btnBuySuperPowerCouldown {
+  top: 510px;
+  left: 1214px;
+}
+#shop > button > h2 {
+  margin: 2px auto 5px auto;
+  font-size: 30px;
+}
+#coin {
+  height: 20px;
+  margin-left: 3px;
+}
+#attackDamageImg,
+#healthImg,
+#superAttackImg,
+#couldownImg {
+  height: 40px;
+  margin-right: 5px;
+}
+#infoShop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 600px;
+  top: 10px;
+  width: 500px;
+  height: 90px;
+  background-color: rgb(110, 114, 114);
+}
+#infoCoins {
+  font-size: 50px;
+}
+#infoCoin {
+  height: 35px;
+  margin-left: 5px;
+}

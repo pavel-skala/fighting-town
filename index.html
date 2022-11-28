@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game</title>
+    <link rel="stylesheet" href="./res/css/style.css" />
+  </head>
+  <body>
+    <div id="town">
+      <button id="goBattle">Battle</button>
+      <button id="goShop">Shop</button>
+    </div>
+    <div id="battleField">
+      <div id="character"></div>
+      <div id="enemy"></div>
+      <button id="btnAttack">Attack</button>
+      <button id="btnSuperAttack">Super Attack</button>
+      <div id="myHealth">20</div>
+      <div id="enemyHealth">20</div>
+    </div>
+    <div id="shop">
+      <button id="goBackInShop">Back</button>
+      <button id="goHouse">House</button>
+      <div id="infoShop"><h2 id="infoCoins">Coins: 0</h2><img src="./res/img/coin.png" alt="coin" id="infoCoin"/></div>
+      <button id="btnBuyBasicAttack">
+        <h2>Attack</h2>
+        <div>
+          <img src="./res/img/arrow.png" alt="arrow" id="attackDamageImg" />
+          <p id="attackLevel">Level: 0</p>
+        </div>
+        <div>
+          <p id="attackPrice">20</p>
+          <img src="./res/img/coin.png" alt="coin" id="coin" />
+        </div>
+      </button>
+
+      <button id="btnBuyHealth">
+        <h2>Health</h2>
+        <div>
+          <img src="./res/img/health.png" alt="health" id="healthImg" />
+          <p id="healthLevel">Level: 0</p>
+        </div>
+        <div>
+          <p id="healthPrice">20</p>
+          <img src="./res/img/coin.png" alt="coin" id="coin" />
+        </div>
+      </button> 
+
+      <button id="btnBuySuperAttack">
+        <h2>Super attack</h2>
+        <div>
+          <img src="./res/img/star.png" alt="star" id="superAttackImg" />
+          <p id="superAttackLevel">Level: 0</p>
+        </div>
+        <div>
+          <p id="superAttackPrice">20</p>
+          <img src="./res/img/coin.png" alt="coin" id="coin" />
+        </div>
+      </button>
+
+      <button id="btnBuySuperPowerCouldown">
+        <h2>Couldown</h2>
+        <div>
+          <img src="./res/img/clock.png" alt="clock" id="couldownImg" />
+          <p id="couldownLevel">Level: 0</p>
+        </div>
+        <div>
+          <p id="couldownPrice">20</p>
+          <img src="./res/img/coin.png" alt="coin" id="coin" />
+        </div>
+      </button>
+    </div>
+    <div id="house">
+      <button id="goBackInHouse">Back</button>
+    </div>
+
+    <script src="./res/js/main.js"></script>
+  </body>
+</html>
