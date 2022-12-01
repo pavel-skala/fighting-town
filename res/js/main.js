@@ -19,7 +19,6 @@ const btnSuperAttack = document.getElementById("btnSuperAttack");
 const myHealth = document.getElementById("myHealth");
 const enemyHealth = document.getElementById("enemyHealth");
 
-//
 const character = document.getElementsByClassName("character");
 
 //buy buttons
