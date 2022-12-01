@@ -3,35 +3,40 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  overflow: hidden;
 }
 #town {
-  background: url(../img/town.jpg);
+  background: url(../img/backgrounds/town.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   display: block;
   height: 100%;
 }
 #battleField {
-  background: url(../img/battlefield01.jpg);
+  background: url(../img/backgrounds/battlefield01.jpg);
   background-repeat: no-repeat;
   display: none;
   background-size: cover;
   height: 100%;
 }
 #shop {
-  background: url(../img/shop.png);
+  background: url(../img/backgrounds/shop.png);
   background-repeat: no-repeat;
   display: none;
   background-size: cover;
   height: 100%;
 }
 #house {
-  background: url(../img/house03.jpg);
+  background: url(../img/backgrounds/house03.jpg);
   background-repeat: no-repeat;
   display: none;
   background-size: cover;
   height: 100%;
 }
+
+/*
+move buttons
+*/
 #goBattle,
 #goShop,
 #goBackInShop,
@@ -80,17 +85,29 @@ body {
 }
 
 /*
-battle
+character
 */
-#character {
-  background: url(../img/warrior.png);
+.character {
+  background: url(../img/wizard.png);
   background-repeat: no-repeat;
   background-size: cover;
   position: absolute;
-  top: 180px;
-  left: 50px;
+  top: 400px;
+  left: 190px;
   width: 400px;
   height: 555px;
+}
+#shopCharacter {
+  top: 350px;
+  left: 50px;
+}
+
+/*
+battle
+*/
+#player {
+  top: 300px;
+  left: 100px;
 }
 #enemy {
   background: url(../img/enemy01.png);
@@ -99,8 +116,8 @@ battle
   height: 585px;
   width: 490px;
   position: absolute;
-  top: 100px;
-  left: 600px;
+  top: 200px;
+  left: 700px;
 }
 #btnAttack,
 #btnSuperAttack {
@@ -129,6 +146,32 @@ battle
 #enemyHealth {
   top: 100px;
   left: 850px;
+}
+#winInfo,
+#loseInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  background-color: black;
+  color: white;
+  width: 500px;
+  height: 500px;
+  top: 100px;
+  left: 100px;
+  font-size: 30px;
+}
+#loseInfo{
+  display: none;
+}
+#winInfo>h2,
+#loseInfo>h2{
+  margin: 10px 0;
+  font-size: 65px;
+}
+#winInfo>div{
+  display: flex;
+  align-items: center;
 }
 
 /*
@@ -169,13 +212,14 @@ shop
   left: 960px;
 }
 #btnBuyHealth {
-  top: 510px;
-  left: 960px;
-}
-#btnBuySuperAttack {
   top: 355px;
   left: 1214px;
 }
+#btnBuySuperAttack {
+  top: 510px;
+  left: 960px;
+}
+
 #btnBuySuperPowerCouldown {
   top: 510px;
   left: 1214px;
@@ -202,9 +246,12 @@ shop
   position: absolute;
   left: 600px;
   top: 10px;
-  width: 500px;
+  width: 400px;
   height: 90px;
-  background-color: rgb(110, 114, 114);
+  background-color: rgb(42 42 42);
+  color: white;
+  border: 1px solid white;
+  border-radius: 70px;
 }
 #infoCoins {
   font-size: 50px;
