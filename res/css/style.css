@@ -53,7 +53,7 @@ move buttons
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition-duration: 0.5s;
+  transition-duration: 0.3s;
   transition-property: box-shadow;
 }
 #goBattle:hover,
@@ -155,19 +155,24 @@ battle
   position: absolute;
   background-color: black;
   color: white;
-  width: 500px;
-  height: 500px;
   top: 230px;
   left: 450px;
-  font-size: 30px;
+  font-size: 35px;
 }
-#loseInfo {
+#winInfo {
+  width: 500px;
+  height: 500px;
   display: none;
 }
+#loseInfo{
+  width: 500px;
+  height: 380px;
+}
+
 #winInfo > h2,
 #loseInfo > h2 {
   margin: 10px 0;
-  font-size: 65px;
+  font-size: 70px;
 }
 #winInfo > div {
   display: flex;
@@ -176,10 +181,16 @@ battle
 #btnEndWinBattle,
 #btnEndLoseBattle {
   background-color: white;
-  width: 100px;
-  height: 50px;
+  width: 200px;
+  height: 75px;
   cursor: pointer;
-  font-size: 20px;
+  font-size: 40px;
+  transition: box-shadow, 0.3s;
+  border-radius: 15px;
+}
+#btnEndWinBattle:hover,
+#btnEndLoseBattle:hover{
+  box-shadow: white 0 0 20px 0;
 }
 
 /*

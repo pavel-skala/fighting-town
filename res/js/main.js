@@ -18,6 +18,9 @@ const btnAttack = document.getElementById("btnAttack");
 const btnSuperAttack = document.getElementById("btnSuperAttack");
 const myHealth = document.getElementById("myHealth");
 const enemyHealth = document.getElementById("enemyHealth");
+//continue button
+const btnEndWinBattle = document.getElementById("btnEndWinBattle");
+const btnEndLoseBattle = document.getElementById("btnEndLoseBattle");
 
 const character = document.getElementsByClassName("character");
 
@@ -73,4 +76,12 @@ btnAttack.onmousedown = () =>{
 }
 btnAttack.onmouseup = () => {
     player.style.left = "100px";
+}
+btnEndWinBattle.onclick = () => {
+    battleField.style.display = "none";
+    town.style.display = "block";
+}
+btnEndLoseBattle.onclick = () => {
+    battleField.style.display = "none";
+    town.style.display = "block";
 }
