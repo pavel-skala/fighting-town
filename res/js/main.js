@@ -18,6 +18,10 @@ const btnAttack = document.getElementById("btnAttack");
 const btnSuperAttack = document.getElementById("btnSuperAttack");
 const myHealth = document.getElementById("myHealth");
 const enemyHealth = document.getElementById("enemyHealth");
+//battle info
+const winInfo = document.getElementById("winInfo");
+const loseInfo = document.getElementById("loseInfo");
+const addedMoneyInfo = document.getElementById("addedMoneyInfo");
 //continue button
 const btnEndWinBattle = document.getElementById("btnEndWinBattle");
 const btnEndLoseBattle = document.getElementById("btnEndLoseBattle");
@@ -44,44 +48,63 @@ const couldownPrice = document.getElementById("couldownPrice");
 const infoCoins = document.getElementById("infoCoins");
 
 //move buttons
-goBattle.onclick = () =>{
-    town.style.display = "none";
-    battleField.style.display = "block";
-}
+goBattle.onclick = () => {
+  town.style.display = "none";
+  battleField.style.display = "block";
+};
 
-goShop.onclick = () =>{
-    town.style.display = "none";
-    shop.style.display = "block";
-}
+goShop.onclick = () => {
+  town.style.display = "none";
+  shop.style.display = "block";
+};
 
-goBackInShop.onclick = () =>{
-    town.style.display = "block";
-    shop.style.display = "none";
-}
+goBackInShop.onclick = () => {
+  town.style.display = "block";
+  shop.style.display = "none";
+};
 
-goHouse.onclick = () =>{
-    house.style.display = "block";
-    shop.style.display = "none";
-}
+goHouse.onclick = () => {
+  house.style.display = "block";
+  shop.style.display = "none";
+};
 
-goBackInHouse.onclick = () =>{
-    shop.style.display = "block";
-    house.style.display = "none";
-}
+goBackInHouse.onclick = () => {
+  shop.style.display = "block";
+  house.style.display = "none";
+};
 
 //battle
-btnAttack.onmousedown = () =>{
+//my attack
+btnAttack.onmousedown = () => {
+  if (enemyHealth.innerHTML > 0 && myHealth.innerHTML > 0) {
     player.style.left = "350px";
-    enemyHealth.innerHTML --;
-}
+    enemyHealth.innerHTML--;
+  }
+  if (enemyHealth.innerHTML <= 0) {
+    winInfo.style.display = "flex";
+    clearInterval(enemyAttackInterval);
+  }
+};
 btnAttack.onmouseup = () => {
-    player.style.left = "100px";
-}
+  player.style.left = "100px";
+};
+
+//enemy attack
+const enemyAttackInterval = setInterval(() => {
+  myHealth.innerHTML--;
+  if (myHealth.innerHTML <= 0) {
+    loseInfo.style.display = "flex";
+    clearInterval(enemyAttackInterval);
+  }
+}, 500);
+
 btnEndWinBattle.onclick = () => {
-    battleField.style.display = "none";
-    town.style.display = "block";
-}
+  battleField.style.display = "none";
+  town.style.display = "block";
+  winInfo.style.display = "none";
+};
 btnEndLoseBattle.onclick = () => {
-    battleField.style.display = "none";
-    town.style.display = "block";
-}
+  battleField.style.display = "none";
+  town.style.display = "block";
+  loseInfo.style.display = "none";
+};

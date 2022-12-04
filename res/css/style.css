@@ -157,39 +157,48 @@ battle
   color: white;
   top: 230px;
   left: 450px;
-  font-size: 35px;
+  font-size: 40px;
+  border-radius: 5%;
+  box-shadow: black 0 0 20px 0;
+  display: none;
 }
 #winInfo {
   width: 500px;
-  height: 500px;
-  display: none;
+  height: 510px;
 }
-#loseInfo{
-  width: 500px;
-  height: 380px;
+#loseInfo {
+  width: 520px;
+  height: 400px;
+  
 }
 
 #winInfo > h2,
 #loseInfo > h2 {
-  margin: 10px 0;
-  font-size: 70px;
+  margin: 20px 0 0 0;
+  font-size: 80px;
 }
 #winInfo > div {
   display: flex;
   align-items: center;
 }
+#winInfo > p {
+  margin-bottom: 0;
+}
+#winInfo > div > img {
+  height: 30px;
+}
 #btnEndWinBattle,
 #btnEndLoseBattle {
   background-color: white;
-  width: 200px;
-  height: 75px;
+  width: 225px;
+  height: 80px;
   cursor: pointer;
-  font-size: 40px;
+  font-size: 48px;
   transition: box-shadow, 0.3s;
   border-radius: 15px;
 }
 #btnEndWinBattle:hover,
-#btnEndLoseBattle:hover{
+#btnEndLoseBattle:hover {
   box-shadow: white 0 0 20px 0;
 }
 
