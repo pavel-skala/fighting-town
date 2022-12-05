@@ -121,9 +121,13 @@ battle
 }
 #btnAttack,
 #btnSuperAttack {
-  width: 100px;
+  width: 110px;
+  height: 60px;
   position: absolute;
   cursor: pointer;
+  background-color: rgb(255, 67, 67);
+  font-size: 20px;
+  border-radius: 14px;
 }
 #btnAttack {
   top: 30px;
@@ -133,17 +137,17 @@ battle
   top: 30px;
   left: 620px;
 }
-#myHealth,
-#enemyHealth {
+#myHealthInfo,
+#enemyHealthInfo {
   position: absolute;
-  background-color: black;
-  color: rgb(255, 0, 0);
+  color: rgb(0, 0, 0);
+  font-size: 30px;
 }
-#myHealth {
+#myHealthInfo {
   top: 100px;
   left: 260px;
 }
-#enemyHealth {
+#enemyHealthInfo {
   top: 100px;
   left: 850px;
 }
@@ -169,7 +173,6 @@ battle
 #loseInfo {
   width: 520px;
   height: 400px;
-  
 }
 
 #winInfo > h2,
@@ -281,7 +284,7 @@ shop
   border: 1px solid white;
   border-radius: 70px;
 }
-#infoCoins {
+#coinsInfo {
   font-size: 50px;
 }
 #infoCoin {
