@@ -41,11 +41,12 @@ const superAttackLevel = document.getElementById("superAttackLevel");
 const couldownLevel = document.getElementById("couldownLevel");
 
 //price
-const attackPrice = document.getElementById("attackPrice");
-const healthPrice = document.getElementById("healthPrice");
-const superAttackPrice = document.getElementById("superAttackPrice");
-const couldownPrice = document.getElementById("couldownPrice");
+const attackPriceInfo = document.getElementById("attackPriceInfo");
+const healthPriceInfo = document.getElementById("healthPriceInfo");
+const superAttackPriceInfo = document.getElementById("superAttackPriceInfo");
+const couldownPriceInfo = document.getElementById("couldownPriceInfo");
 const coinsInfo = document.getElementById("coinsInfo");
+const infoShop = document.getElementById("infoShop");
 
 let enemyAttackInterval;
 
@@ -56,8 +57,13 @@ let enemyAttackDamage = 1;
 let myHealth = 20;
 let enemyHealth = 20;
 
-let addedMoney = 10;
+let addedMoney = 100;
 let numberOfCoins = 0;
+//shop prices
+let attackPrice = 20;
+let healthPrice = 20;
+let superAttackPrice = 20;
+let couldownPrice = 20;
 
 //move buttons
 goBattle.onclick = () => {
@@ -103,29 +109,70 @@ btnAttack.onmousedown = () => {
   if (enemyHealthInfo.innerHTML > 0 && myHealthInfo.innerHTML > 0) {
     player.style.left = "350px";
     enemyHealthInfo.innerHTML-= myAttackDamage;
-    btnAttack.style.backgroundColor = "#f10000";
+    btnAttack.style.backgroundColor = "rgb(17 95 255)";
   }
   if (enemyHealthInfo.innerHTML <= 0) {
     winInfo.style.display = "flex";
     enemyHealthInfo.innerHTML = 0;
     addedMoneyInfo.innerHTML = `+${addedMoney}`;
-    numberOfCoins += addedMoney;
-    coinsInfo.innerHTML = numberOfCoins;
+    
     clearInterval(enemyAttackInterval);
   }
 };
 btnAttack.onmouseup = () => {
   player.style.left = "100px";
-  btnAttack.style.backgroundColor = "#ff4343";
+  btnAttack.style.backgroundColor = "rgb(64, 185, 255)";
 };
 
 btnEndWinBattle.onclick = () => {
   battleField.style.display = "none";
   town.style.display = "block";
   winInfo.style.display = "none";
+  numberOfCoins += addedMoney;
+    coinsInfo.innerHTML = numberOfCoins;
 };
 btnEndLoseBattle.onclick = () => {
   battleField.style.display = "none";
   town.style.display = "block";
   loseInfo.style.display = "none";
 };
+
+//shop buying items
+btnBuyBasicAttack.onclick = () =>{
+  if (numberOfCoins >= attackPrice){
+    myAttackDamage++;
+
+    numberOfCoins -= attackPrice;
+    coinsInfo.innerHTML = numberOfCoins;
+    attackLevel.innerHTML ++;
+    attackPrice += 10;
+    attackPriceInfo.innerHTML = attackPrice;
+  }
+}
+btnBuyHealth.onclick = () =>{
+  if (numberOfCoins >= healthPrice){
+    numberOfCoins -= healthPrice;
+    coinsInfo.innerHTML = numberOfCoins;
+    healthLevel.innerHTML ++;
+    healthPrice += 10;
+    healthPriceInfo.innerHTML = healthPrice ;
+  }
+}
+btnBuySuperAttack.onclick = () =>{
+  if (numberOfCoins >= superAttackPrice){
+    numberOfCoins -= superAttackPrice;
+    coinsInfo.innerHTML = numberOfCoins;
+    superAttackLevel.innerHTML ++;
+    superAttackPrice += 10;
+    superAttackPriceInfo.innerHTML = superAttackPrice ;
+  }
+}
+btnBuySuperPowerCouldown.onclick = () =>{
+  if (numberOfCoins >= couldownPrice){
+    numberOfCoins -= couldownPrice;
+    coinsInfo.innerHTML = numberOfCoins;
+    couldownLevel.innerHTML ++;
+    couldownPrice += 10;
+    couldownPriceInfo.innerHTML = couldownPrice ;
+  }
+}

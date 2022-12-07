@@ -125,30 +125,29 @@ battle
   height: 60px;
   position: absolute;
   cursor: pointer;
-  background-color: rgb(255, 67, 67);
   font-size: 20px;
   border-radius: 14px;
 }
 #btnAttack {
   top: 30px;
   left: 400px;
+  background-color: rgb(64, 185, 255);
 }
 #btnSuperAttack {
   top: 30px;
   left: 620px;
+  background-color: #ff5353;
 }
 #myHealthInfo,
 #enemyHealthInfo {
   position: absolute;
-  color: rgb(0, 0, 0);
-  font-size: 30px;
+  font-size: 40px;
+  top: 135px;
 }
 #myHealthInfo {
-  top: 100px;
   left: 260px;
 }
 #enemyHealthInfo {
-  top: 100px;
   left: 850px;
 }
 #winInfo,
@@ -216,7 +215,7 @@ shop
   position: absolute;
   cursor: pointer;
   flex-direction: column;
-  background-color: #03a9f4;
+  background-color: #ff5353;
   color: black;
   width: 235px;
   border-radius: 32px;
@@ -225,7 +224,7 @@ shop
 #btnBuyHealth:hover,
 #btnBuySuperAttack:hover,
 #btnBuySuperPowerCouldown:hover {
-  background-color: #0590ff;
+  background-color: #ff2828;
 }
 #btnBuyBasicAttack div,
 #btnBuyHealth div,
@@ -250,10 +249,15 @@ shop
   top: 510px;
   left: 960px;
 }
-
 #btnBuySuperPowerCouldown {
   top: 510px;
   left: 1214px;
+}
+#attackLevel,
+#healthLevel,
+#superAttackLevel,
+#couldownLevel {
+  margin-left: 5px;
 }
 #shop > button > h2 {
   margin: 2px auto 5px auto;
@@ -273,16 +277,15 @@ shop
 #infoShop {
   display: flex;
   align-items: center;
-  justify-content: center;
   position: absolute;
   left: 600px;
   top: 10px;
-  width: 400px;
   height: 90px;
   background-color: rgb(42 42 42);
   color: white;
   border: 1px solid white;
   border-radius: 70px;
+  padding: 0 80px;
 }
 #coinsInfo {
   font-size: 50px;
