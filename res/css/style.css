@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+* {
+  font-family: "Roboto", sans-serif;
+}
 body {
   box-sizing: border-box;
   margin: 0;
@@ -5,33 +10,29 @@ body {
   height: 100vh;
   overflow: hidden;
 }
-#town {
-  background: url(../img/backgrounds/town.jpg);
+#town,
+#battleField,
+#shop,
+#house {
   background-repeat: no-repeat;
   background-size: cover;
-  display: block;
   height: 100%;
+}
+#town {
+  background-image: url(../img/backgrounds/town.jpg);
+  display: block;
 }
 #battleField {
-  background: url(../img/backgrounds/battlefield01.jpg);
-  background-repeat: no-repeat;
+  background-image: url(../img/backgrounds/battlefield01.jpg);
   display: none;
-  background-size: cover;
-  height: 100%;
 }
 #shop {
-  background: url(../img/backgrounds/shop.png);
-  background-repeat: no-repeat;
+  background-image: url(../img/backgrounds/shop.png);
   display: none;
-  background-size: cover;
-  height: 100%;
 }
 #house {
-  background: url(../img/backgrounds/house03.jpg);
-  background-repeat: no-repeat;
+  background-image: url(../img/backgrounds/house03.jpg);
   display: none;
-  background-size: cover;
-  height: 100%;
 }
 
 /*
@@ -149,6 +150,19 @@ battle
 }
 #enemyHealthInfo {
   left: 850px;
+}
+#superAttackLoadingBar{
+  position: absolute;
+  width: 115px;
+  height: 40px;
+  top: 120px;
+  left: 630px;
+  background-color: red;
+}
+#superAttackLoader{
+  width: 100%;
+  height: 100%;
+  background-color: rgb(36, 219, 36);
 }
 #winInfo,
 #loseInfo {
