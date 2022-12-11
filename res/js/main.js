@@ -50,21 +50,23 @@ const superAttackPriceInfo = document.getElementById("superAttackPriceInfo");
 const couldownPriceInfo = document.getElementById("couldownPriceInfo");
 const coinsInfo = document.getElementById("coinsInfo");
 const infoShop = document.getElementById("infoShop");
+const noMoney = document.getElementById("noMoney");
+const noMoneyContinue = document.getElementById("noMoneyContinue");
 
 let enemyAttackInterval;
 let superAttackInterval;
 
 //my attack
-let myAttackDamage = 3;
+let myAttackDamage = 1;
 let enemyAttackDamage = 1;
 //my health
-let myHealth = 100;
+let myHealth = 20;
 let enemyHealth = 20;
 //super attack
 let superAttackDamage = 5;
 let superAttackLoadingNumber = 0;
 let superAttackActivate = 100;
-
+//money
 let addedMoney = 100;
 let numberOfCoins = 0;
 //shop prices
@@ -113,8 +115,9 @@ goBattle.onclick = () => {
     }
   }, 500);
   //super attack
+  btnSuperAttack.style.backgroundColor = "#ff5353";
   superAttackLoadingNumber = 0;
-  superAttackLoader.style.width = "0%"
+  superAttackLoader.style.width = "0%";
   superAttackInterval = setInterval(() => {
     console.log("loading");
     superAttackLoadingNumber += 20;
@@ -150,8 +153,7 @@ btnAttack.onmouseup = () => {
 btnSuperAttack.onclick = () => {
   if (superAttackLoadingNumber >= superAttackActivate) {
     console.log("utok");
-    enemyHealth -= 5;
-    enemyHealthInfo.innerHTML = enemyHealth;
+    enemyHealthInfo.innerHTML -= 5;
 
     btnSuperAttack.style.backgroundColor = "#ff5353";
     superAttackLoadingNumber = 0;
@@ -166,6 +168,14 @@ btnSuperAttack.onclick = () => {
         clearInterval(superAttackInterval);
       }
     }, 1000);
+    if (enemyHealthInfo.innerHTML <= 0) {
+      winInfo.style.display = "flex";
+      enemyHealthInfo.innerHTML = 0;
+      addedMoneyInfo.innerHTML = `+${addedMoney}`;
+
+      clearInterval(enemyAttackInterval);
+      clearInterval(superAttackInterval);
+    }
   }
 };
 
@@ -193,14 +203,22 @@ btnBuyBasicAttack.onclick = () => {
     attackPrice += 10;
     attackPriceInfo.innerHTML = attackPrice;
   }
+  else{
+    noMoney.style.display = "flex";
+  }
 };
 btnBuyHealth.onclick = () => {
   if (numberOfCoins >= healthPrice) {
+    myHealth = Math.round(myHealth * 1.2);
+
     numberOfCoins -= healthPrice;
     coinsInfo.innerHTML = numberOfCoins;
     healthLevel.innerHTML++;
     healthPrice += 10;
     healthPriceInfo.innerHTML = healthPrice;
+  }
+  else{
+    noMoney.style.display = "flex";
   }
 };
 btnBuySuperAttack.onclick = () => {
@@ -211,6 +229,9 @@ btnBuySuperAttack.onclick = () => {
     superAttackPrice += 10;
     superAttackPriceInfo.innerHTML = superAttackPrice;
   }
+  else{
+    noMoney.style.display = "flex";
+  }
 };
 btnBuySuperPowerCouldown.onclick = () => {
   if (numberOfCoins >= couldownPrice) {
@@ -220,4 +241,10 @@ btnBuySuperPowerCouldown.onclick = () => {
     couldownPrice += 10;
     couldownPriceInfo.innerHTML = couldownPrice;
   }
+  else{
+    noMoney.style.display = "flex";
+  }
 };
+noMoneyContinue.onclick = () =>{
+  noMoney.style.display = "none";
+}

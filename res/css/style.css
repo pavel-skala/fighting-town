@@ -166,7 +166,7 @@ battle
 }
 #winInfo,
 #loseInfo {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   position: absolute;
@@ -177,7 +177,6 @@ battle
   font-size: 40px;
   border-radius: 5%;
   box-shadow: black 0 0 20px 0;
-  display: none;
 }
 #winInfo {
   width: 500px;
@@ -292,7 +291,7 @@ shop
   display: flex;
   align-items: center;
   position: absolute;
-  left: 600px;
+  left: 650px;
   top: 10px;
   height: 90px;
   background-color: rgb(42 42 42);
@@ -307,4 +306,30 @@ shop
 #infoCoin {
   height: 35px;
   margin-left: 5px;
+  left: 1px;
+}
+#noMoney{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: white;
+  position: absolute;
+  top: 300px;
+  left: 600px;
+  width: 550px;
+  height: 250px;
+  font-size: 38px;
+  border-radius: 50px;
+}
+#noMoneyContinue{
+  width: 250px;
+  height: 80px;
+  font-size: 45px;
+  background-color: white;
+  transition: box-shadow, 0.3s;
+  border-radius: 35px;
+}
+#noMoneyContinue:hover{
+  box-shadow: white 0 0 20px 0;
 }
