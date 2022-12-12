@@ -52,6 +52,15 @@ const coinsInfo = document.getElementById("coinsInfo");
 const infoShop = document.getElementById("infoShop");
 const noMoney = document.getElementById("noMoney");
 const noMoneyContinue = document.getElementById("noMoneyContinue");
+//house
+const changeCharacterLeft = document.getElementById("changeCharacterLeft");
+const changeCharacterRight = document.getElementById("changeCharacterRight");
+const characterName = document.getElementById("characterName");
+const characterStats = document.getElementById("characterStats");
+const characterAbout = document.getElementById("characterAbout");
+const btnBuyCharacter = document.getElementById("btnBuyCharacter");
+const btnPickCharacter = document.getElementById("btnPickCharacter");
+const characterPrice = document.getElementById("characterPrice");
 
 let enemyAttackInterval;
 let superAttackInterval;

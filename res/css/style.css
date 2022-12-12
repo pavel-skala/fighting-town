@@ -309,7 +309,7 @@ shop
   left: 1px;
 }
 #noMoney{
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   background-color: black;
@@ -321,6 +321,7 @@ shop
   height: 250px;
   font-size: 38px;
   border-radius: 50px;
+  box-shadow: black 0 0 20px 0;
 }
 #noMoneyContinue{
   width: 250px;
@@ -329,7 +330,65 @@ shop
   background-color: white;
   transition: box-shadow, 0.3s;
   border-radius: 35px;
+  cursor: pointer;
 }
 #noMoneyContinue:hover{
   box-shadow: white 0 0 20px 0;
+}
+/*
+house
+*/
+#changeCharacter{
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  background-color: blue;
+  top: 220px;
+  left: 100px;
+}
+#characterHouse{
+  top: 165px;
+  left: 180px;
+}
+#changeCharacterLeft,
+#changeCharacterRight{
+  color: white;
+  font-size: 120px;
+  cursor: pointer;
+  position: absolute;
+  top: 280px;
+}
+#changeCharacterRight{
+  transform: rotate(180deg);
+  left: 580px;
+}
+#characterDescription{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100px;
+  left: 950px;
+  width: 500px;
+  height: 850px;
+  background-color: black;
+  color: white;
+}
+#btnBuyCharacter,
+#btnPickCharacter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  width: 200px;
+  height: 100px;
+  cursor: pointer;
+  font-size: 30px;
+  border-radius: 40px;
+}
+#btnBuyCharacter:hover,
+#btnPickCharacter:hover{
+  background-color: #d4d4d4;
+}
+#btnPickCharacter{
+  display: none;
 }
