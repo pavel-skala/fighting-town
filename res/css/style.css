@@ -54,8 +54,7 @@ move buttons
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  transition-duration: 0.3s;
-  transition-property: box-shadow;
+  transition: box-shadow, 0.3s;
 }
 #goBattle:hover,
 #goShop:hover,
@@ -306,7 +305,6 @@ shop
 #infoCoin {
   height: 35px;
   margin-left: 5px;
-  left: 1px;
 }
 #noMoney{
   display: none;
@@ -382,12 +380,14 @@ house
   width: 200px;
   height: 100px;
   cursor: pointer;
-  font-size: 30px;
+  font-size: 40px;
   border-radius: 40px;
+  transition: box-shadow, 0.3s;
 }
 #btnBuyCharacter:hover,
 #btnPickCharacter:hover{
   background-color: #d4d4d4;
+  box-shadow: 0 0 7px 0px white;
 }
 #btnPickCharacter{
   display: none;
