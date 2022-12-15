@@ -88,9 +88,9 @@ move buttons
 character
 */
 .character {
-  background: url(../img/wizard.png);
+  background-image: url(../img/wizard.png);
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100%;
   position: absolute;
   top: 400px;
   left: 190px;
@@ -275,7 +275,7 @@ shop
   margin: 2px auto 5px auto;
   font-size: 30px;
 }
-#coin {
+.coin {
   height: 20px;
   margin-left: 3px;
 }
@@ -302,7 +302,7 @@ shop
 #coinsInfo {
   font-size: 50px;
 }
-#infoCoin {
+.infoCoin {
   height: 35px;
   margin-left: 5px;
 }
@@ -336,25 +336,56 @@ shop
 /*
 house
 */
+
+@keyframes right{
+	from{
+		transform: translateX(-150%);
+		opacity: 0;
+	}
+	30%{
+		opacity: 0;
+	}
+	to{
+		transform: translateX(0%);
+		opacity: 1;
+	}
+}
+@keyframes right-out{
+	from{
+		transform: translateX(0%);
+		opacity: 1;
+	}
+	40%{
+		opacity: 1;
+	}
+	60%{
+		opacity: 0;
+	}
+	to{
+		transform: translateX(150%);
+		opacity: 0;
+	}
+}
 #changeCharacter{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: absolute;
   width: 700px;
   height: 700px;
-  background-color: blue;
   top: 220px;
   left: 100px;
 }
-#characterHouse{
-  top: 165px;
-  left: 180px;
+#characterInHouse{
+  position: static;
+  animation-duration: 1s;
+  background-image: url(../img/wizard.png);
 }
 #changeCharacterLeft,
 #changeCharacterRight{
   color: white;
   font-size: 120px;
   cursor: pointer;
-  position: absolute;
-  top: 280px;
 }
 #changeCharacterRight{
   transform: rotate(180deg);
@@ -363,6 +394,7 @@ house
 #characterDescription{
   display: flex;
   flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 100px;
   left: 950px;

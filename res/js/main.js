@@ -55,6 +55,7 @@ const noMoneyContinue = document.getElementById("noMoneyContinue");
 //house
 const changeCharacterLeft = document.getElementById("changeCharacterLeft");
 const changeCharacterRight = document.getElementById("changeCharacterRight");
+const characterInHouse = document.getElementById("characterInHouse");
 const characterName = document.getElementById("characterName");
 const characterStats = document.getElementById("characterStats");
 const characterAbout = document.getElementById("characterAbout");
@@ -83,7 +84,11 @@ let attackPrice = 20;
 let healthPrice = 20;
 let superAttackPrice = 20;
 let couldownPrice = 20;
-
+//house
+let numberOfCharacter = 1;
+let character1Status = true;
+let character2Status = false;
+let character3Status = false;
 //move buttons
 
 goShop.onclick = () => {
@@ -211,8 +216,7 @@ btnBuyBasicAttack.onclick = () => {
     attackLevel.innerHTML++;
     attackPrice += 10;
     attackPriceInfo.innerHTML = attackPrice;
-  }
-  else{
+  } else {
     noMoney.style.display = "flex";
   }
 };
@@ -225,8 +229,7 @@ btnBuyHealth.onclick = () => {
     healthLevel.innerHTML++;
     healthPrice += 10;
     healthPriceInfo.innerHTML = healthPrice;
-  }
-  else{
+  } else {
     noMoney.style.display = "flex";
   }
 };
@@ -237,8 +240,7 @@ btnBuySuperAttack.onclick = () => {
     superAttackLevel.innerHTML++;
     superAttackPrice += 10;
     superAttackPriceInfo.innerHTML = superAttackPrice;
-  }
-  else{
+  } else {
     noMoney.style.display = "flex";
   }
 };
@@ -249,11 +251,51 @@ btnBuySuperPowerCouldown.onclick = () => {
     couldownLevel.innerHTML++;
     couldownPrice += 10;
     couldownPriceInfo.innerHTML = couldownPrice;
-  }
-  else{
+  } else {
     noMoney.style.display = "flex";
   }
 };
-noMoneyContinue.onclick = () =>{
+noMoneyContinue.onclick = () => {
   noMoney.style.display = "none";
-}
+};
+
+//house
+changeCharacterRight.onclick = () => {
+  if (numberOfCharacter == 3) {
+    numberOfCharacter = 1;
+  } else {
+    numberOfCharacter++;
+  }
+  switch (numberOfCharacter) {
+    case 1:
+      characterInHouse.style.backgroundImage = "url(./res/img/wizard.png)";
+      characterName.innerHTML = "Fire Wizard";
+      break;
+    case 2:
+      characterInHouse.style.backgroundImage = "url(./res/img/warrior.png)";
+      characterName.innerHTML = "Dark Knight";
+      break;
+    case 3:
+      characterInHouse.style.backgroundImage = "url(./res/img/werewolf.png)";
+      characterName.innerHTML = "Bloodthirsty Werewolf";
+      break;
+  }
+};
+changeCharacterLeft.onclick = () => {
+  if (numberOfCharacter == 1) {
+    numberOfCharacter = 3;
+  } else {
+    numberOfCharacter--;
+  }
+  switch (numberOfCharacter) {
+    case 0:
+      characterInHouse.style.backgroundImage = "url(./res/img/wizard.png)";
+      break;
+    case 1:
+      characterInHouse.style.backgroundImage = "url(./res/img/warrior.png)";
+      break;
+    case 2:
+      characterInHouse.style.backgroundImage = "url(./res/img/werewolf.png)";
+      break;
+  }
+};
