@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fighting town</title>
-    <link rel="shortcut icon" href="./res/img/icons/fireball.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./res/img/icons/fireball.png"
+      type="image/x-icon"
+    />
     <link rel="stylesheet" href="./res/css/style.css" />
   </head>
   <body>
@@ -29,7 +33,7 @@
         <p>Enemy was killed</p>
         <div>
           <p id="addedMoneyInfo">+10</p>
-          <img src="./res/img/icons/coin.png" alt="coin" class="coin">
+          <img src="./res/img/icons/coin.png" alt="coin" class="coin" />
         </div>
         <button id="btnEndWinBattle">Continue</button>
       </div>
@@ -43,11 +47,18 @@
       <button id="goBackInShop">Back</button>
       <button id="goHouse">House</button>
       <div class="character" id="shopCharacter"></div>
-      <div id="infoShop"><h2 id="coinsInfo">0</h2><img src="./res/img//icons/coin.png" alt="coin" class="infoCoin"/></div>
+      <div id="infoShop">
+        <h2 id="coinsInfo">0</h2>
+        <img src="./res/img//icons/coin.png" alt="coin" class="infoCoin" />
+      </div>
       <button id="btnBuyBasicAttack">
         <h2>Attack</h2>
         <div>
-          <img src="./res/img//icons/arrow.png" alt="arrow" id="attackDamageImg" />
+          <img
+            src="./res/img//icons/arrow.png"
+            alt="arrow"
+            id="attackDamageImg"
+          />
           <p>Level:</p>
           <p id="attackLevel">0</p>
         </div>
@@ -68,7 +79,7 @@
           <p id="healthPriceInfo">20</p>
           <img src="./res/img/icons/coin.png" alt="coin" class="coin" />
         </div>
-      </button> 
+      </button>
 
       <button id="btnBuySuperAttack">
         <h2>Super attack</h2>
@@ -102,25 +113,71 @@
     </div>
     <div id="house">
       <button id="goBackInHouse">Back</button>
-      
+
       <div id="changeCharacter">
         <i class="fa-solid fa-chevron-left" id="changeCharacterLeft"></i>
         <div class="character" id="characterInHouse"></div>
         <i class="fa-solid fa-chevron-left" id="changeCharacterRight"></i>
       </div>
       <div id="characterDescription">
-        <h1 id="characterName">Fire Wizard</h1>
-        <div id="characterStats"></div>
-        <div id="characterAbout"></div>
+        <h2 id="characterName">Fire Wizard</h2>
+        <div id="characterStats">
+          <div>
+            <p>Attack damage:</p>
+            <p id="characterAttackDamageInfo">10</p>
+          </div>
+          <div>
+            <p>Health:</p>
+            <p id="characterHealthInfo">30</p>
+          </div>
+          <div>
+            <p>Super attack damage:</p>
+            <p id="characterSuperAttackDamageInfo">20</p>
+          </div>
+        </div>
+        <div id="characterAbout">
+        <div id="characterAbout1">
+          <p>
+            A Fire Wizard is a character who is able to use fire magic to
+            destroy his enemies and protect his allies. He is a powerful and
+            dangerous warrior.
+          </p>
+        </div>
+        <div id="characterAbout2">
+          <p>
+            Although the Fire Wizard may seem like an uncompromising and
+            stubborn warrior, he is actually a very scholarly and thoughtful
+            person who is willing to constantly educate himself and improve his
+            skills.
+          </p>
+        </div>
+        <div id="characterAbout3">
+          <p>
+            His abilities are often stronger when he is around fire or when he
+            is exposed to the elements.
+          </p>
+        </div>
+        <div id="characterAbout4">
+          <p>
+            Despite his strength and power, however, the fire wizard is also
+            very humble and knows that his abilities are a gift that should be
+            used with discretion and wisdom.
+          </p>
+        </div>
+        </div>
         <button id="btnBuyCharacter">
           <p id="characterPrice">400</p>
-          <img src="./res/img/icons/coin.png" alt="" class="infoCoin">
+          <img src="./res/img/icons/coin.png" alt="" class="infoCoin" />
         </button>
-        <button id="btnPickCharacter">Pick me!</button>
+        <button id="btnPickCharacter">Pick</button>
+        <h2 id="pickCharacterInfo">You have selected this character</h2>
       </div>
     </div>
 
     <script src="./res/js/main.js"></script>
-    <script src="https://kit.fontawesome.com/1c74c15014.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/1c74c15014.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

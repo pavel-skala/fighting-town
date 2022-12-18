@@ -27,7 +27,7 @@ const superAttackLoader = document.getElementById("superAttackLoader");
 const btnEndWinBattle = document.getElementById("btnEndWinBattle");
 const btnEndLoseBattle = document.getElementById("btnEndLoseBattle");
 
-const character = document.getElementsByClassName("character");
+const characters = document.getElementsByClassName("character");
 
 //buy buttons
 const btnBuyBasicAttack = document.getElementById("btnBuyBasicAttack");
@@ -57,10 +57,21 @@ const changeCharacterLeft = document.getElementById("changeCharacterLeft");
 const changeCharacterRight = document.getElementById("changeCharacterRight");
 const characterInHouse = document.getElementById("characterInHouse");
 const characterName = document.getElementById("characterName");
-const characterStats = document.getElementById("characterStats");
-const characterAbout = document.getElementById("characterAbout");
+const characterAttackDamageInfo = document.getElementById(
+  "characterAttackDamageInfo"
+);
+const characterHealthInfo = document.getElementById("characterHealthInfo");
+const characterSuperAttackDamageInfo = document.getElementById(
+  "characterSuperAttackDamageInfo"
+);
+const characterAbout1 = document.getElementById("characterAbout1");
+const characterAbout2 = document.getElementById("characterAbout2");
+const characterAbout3 = document.getElementById("characterAbout3");
+const characterAbout4 = document.getElementById("characterAbout4");
+const characterAbout5 = document.getElementById("characterAbout5");
 const btnBuyCharacter = document.getElementById("btnBuyCharacter");
 const btnPickCharacter = document.getElementById("btnPickCharacter");
+const pickCharacterInfo = document.getElementById("pickCharacterInfo");
 const characterPrice = document.getElementById("characterPrice");
 
 let enemyAttackInterval;
@@ -78,7 +89,7 @@ let superAttackLoadingNumber = 0;
 let superAttackActivate = 100;
 //money
 let addedMoney = 100;
-let numberOfCoins = 0;
+let numberOfCoins = 1500;
 //shop prices
 let attackPrice = 20;
 let healthPrice = 20;
@@ -86,9 +97,13 @@ let superAttackPrice = 20;
 let couldownPrice = 20;
 //house
 let numberOfCharacter = 1;
-let character1Status = true;
-let character2Status = false;
-let character3Status = false;
+let character1PickStatus = true;
+let character2PickStatus = false;
+let character3PickStatus = false;
+
+let character1BuyStatus = true;
+let character2BuyStatus = false;
+let character3BuyStatus = false;
 //move buttons
 
 goShop.onclick = () => {
@@ -104,11 +119,6 @@ goBackInShop.onclick = () => {
 goHouse.onclick = () => {
   house.style.display = "block";
   shop.style.display = "none";
-};
-
-goBackInHouse.onclick = () => {
-  shop.style.display = "block";
-  house.style.display = "none";
 };
 
 //battle
@@ -260,26 +270,145 @@ noMoneyContinue.onclick = () => {
 };
 
 //house
+const houseChangingCharacter = () => {
+  switch (numberOfCharacter) {
+    case 1: //wizard
+      characterInHouse.style.backgroundImage = "url(./res/img/wizard.png)";
+      characterName.innerHTML = "Fire Wizard";
+      characterAttackDamageInfo.innerHTML = 10;
+      characterHealthInfo.innerHTML = 30;
+      characterSuperAttackDamageInfo.innerHTML = 40;
+      characterAbout1.innerHTML =
+        "<p>A Fire Wizard is a character who is able to use fire magic to destroy his enemies and protect his allies. He is a powerful and dangerous warrior.</p>";
+      characterAbout2.innerHTML =
+        "<p>Although the Fire Wizard may seem like an uncompromising and stubborn warrior, he is actually a very scholarly and thoughtful person who is willing to constantly educate himself and improve his skills.</p>";
+      characterAbout3.innerHTML =
+        "<p>His abilities are often stronger when he is around fire or when he is exposed to the elements.</p>";
+      characterAbout4.innerHTML =
+        "<p>Despite his strength and power, however, the fire wizard is also very humble and knows that his abilities are a gift that should be used with discretion and wisdom.</p>";
+      characterPrice.innerHTML = "400";
+
+      btnPickCharacter.onclick = () => {
+        btnBuyCharacter.style.display = "none";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "block";
+        character1PickStatus = true;
+        character2PickStatus = false;
+        character3PickStatus = false;
+      };
+      if (character1BuyStatus == true && character1PickStatus == false) {
+        btnPickCharacter.style.display = "block";
+        btnBuyCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+
+      break;
+    case 2: //knight
+      characterInHouse.style.backgroundImage = "url(./res/img/warrior.png)";
+      characterName.innerHTML = "Dark Knight";
+      characterAttackDamageInfo.innerHTML = 5;
+      characterHealthInfo.innerHTML = 40;
+      characterSuperAttackDamageInfo.innerHTML = 30;
+      characterAbout1.innerHTML =
+        "<p>The Dark Knight is a powerful and mysterious warrior who is guided by dark forces and uses them to his advantage. His eyes are icy and his gaze chills the blood in the veins.</p>";
+      characterAbout2.innerHTML =
+        "<p>His armour is dark and impenetrable, protecting him from the attacks of his opponents. His sword is bladed, and when you touch it, you feel a chill run through your body.</p>";
+      characterAbout3.innerHTML =
+        "<p>The Dark Knight fears nothing and his courage is unknown. He is willing to risk everything to achieve his goal. He never gives up and his will is unbreakable.</p>";
+      characterAbout4.innerHTML =
+        "<p>The Dark Knight is always ready to fight and his abilities are incredible. His fighting skills are truly dangerous and few would want to face him.</p>";
+      characterPrice.innerHTML = "500";
+
+      btnBuyCharacter.onclick = () => {
+        if (numberOfCoins > characterPrice.innerHTML) {
+          numberOfCoins -= characterPrice.innerHTML;
+          coinsInfo.innerHTML = numberOfCoins;
+          btnBuyCharacter.style.display = "none";
+          btnPickCharacter.style.display = "none";
+          pickCharacterInfo.style.display = "block";
+          character2PickStatus = true;
+          character1PickStatus = false;
+          character3PickStatus = false;
+          character2BuyStatus = true;
+        }
+      };
+      btnPickCharacter.onclick = () => {
+        btnBuyCharacter.style.display = "none";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "block";
+        character2PickStatus = true;
+        character1PickStatus = false;
+        character3PickStatus = false;
+      };
+      if (character2BuyStatus == false) {
+        btnBuyCharacter.style.display = "flex";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+      if (character2BuyStatus == true && character2PickStatus == false) {
+        btnPickCharacter.style.display = "block";
+        btnBuyCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+      break;
+    case 3: //werewolf
+      characterInHouse.style.backgroundImage = "url(./res/img/werewolf.png)";
+      characterName.innerHTML = "Bloodthirsty Werewolf";
+      characterAttackDamageInfo.innerHTML = 15;
+      characterHealthInfo.innerHTML = 20;
+      characterSuperAttackDamageInfo.innerHTML = 30;
+      characterAbout1.innerHTML =
+        "<p>A bloodthirsty werewolf is a monster with brown fur and pointed fangs. It has a tall and powerful body with short legs and long claws, allowing it to move quickly and accurately.</p>";
+      characterAbout2.innerHTML =
+        "<p>The werewolf is very strong and fast, allowing it to attack its victims without warning and transform into its human form</p>";
+      characterAbout3.innerHTML =
+        "<p>The werewolf is also capable of transferring his werewolf form to other humans through bites. This process is painful and sometimes fatal, but it is no problem for the werewolf.</p>";
+      characterAbout4.innerHTML =
+        "<p>The Bloodthirsty Werewolf is thus a dangerous monster that fears nothing and is capable of killing almost anything that comes its way. Its hunger for blood and its thirst for power are insatiable.</p>";
+      characterPrice.innerHTML = "600";
+
+      btnBuyCharacter.onclick = () => {
+        if (numberOfCoins > characterPrice.innerHTML) {
+          numberOfCoins -= characterPrice.innerHTML;
+          coinsInfo.innerHTML = numberOfCoins;
+          btnBuyCharacter.style.display = "none";
+          btnPickCharacter.style.display = "none";
+          pickCharacterInfo.style.display = "block";
+          character3PickStatus = true;
+          character1PickStatus = false;
+          character2PickStatus = false;
+          character3BuyStatus = true;
+        }
+      };
+      btnPickCharacter.onclick = () => {
+        btnBuyCharacter.style.display = "none";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "block";
+        character3PickStatus = true;
+        character1PickStatus = false;
+        character2PickStatus = false;
+      };
+      if (character3BuyStatus == false) {
+        btnBuyCharacter.style.display = "flex";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+      if (character3BuyStatus == true && character3PickStatus == false) {
+        btnPickCharacter.style.display = "block";
+        btnBuyCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+
+      break;
+  }
+};
 changeCharacterRight.onclick = () => {
   if (numberOfCharacter == 3) {
     numberOfCharacter = 1;
   } else {
     numberOfCharacter++;
   }
-  switch (numberOfCharacter) {
-    case 1:
-      characterInHouse.style.backgroundImage = "url(./res/img/wizard.png)";
-      characterName.innerHTML = "Fire Wizard";
-      break;
-    case 2:
-      characterInHouse.style.backgroundImage = "url(./res/img/warrior.png)";
-      characterName.innerHTML = "Dark Knight";
-      break;
-    case 3:
-      characterInHouse.style.backgroundImage = "url(./res/img/werewolf.png)";
-      characterName.innerHTML = "Bloodthirsty Werewolf";
-      break;
-  }
+  houseChangingCharacter();
 };
 changeCharacterLeft.onclick = () => {
   if (numberOfCharacter == 1) {
@@ -287,15 +416,29 @@ changeCharacterLeft.onclick = () => {
   } else {
     numberOfCharacter--;
   }
-  switch (numberOfCharacter) {
-    case 0:
-      characterInHouse.style.backgroundImage = "url(./res/img/wizard.png)";
-      break;
-    case 1:
-      characterInHouse.style.backgroundImage = "url(./res/img/warrior.png)";
-      break;
-    case 2:
-      characterInHouse.style.backgroundImage = "url(./res/img/werewolf.png)";
-      break;
+  houseChangingCharacter();
+};
+window.onload = () => {
+  btnPickCharacter.style.display = "none";
+  btnBuyCharacter.style.display = "none";
+};
+goBackInHouse.onclick = () => {
+  shop.style.display = "block";
+  house.style.display = "none";
+
+  if (character1PickStatus == true) {
+    [...characters].forEach((character) => {
+      character.style.backgroundImage = "url(./res/img/wizard.png)";
+    });
+  }
+  if (character2PickStatus == true) {
+    [...characters].forEach((character) => {
+      character.style.backgroundImage = "url(./res/img/warrior.png)";
+    });
+  }
+  if (character3PickStatus == true) {
+    [...characters].forEach((character) => {
+      character.style.backgroundImage = "url(./res/img/werewolf.png)";
+    });
   }
 };
