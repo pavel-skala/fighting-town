@@ -84,12 +84,13 @@ let enemyAttackDamage = 1;
 let myHealth = 20;
 let enemyHealth = 20;
 //super attack
+let superAttackCouldown = 1000;
 let superAttackDamage = 5;
 let superAttackLoadingNumber = 0;
 let superAttackActivate = 100;
 //money
-let addedMoney = 100;
-let numberOfCoins = 1500;
+let addedMoney = 10;
+let numberOfCoins = 10000;
 //shop prices
 let attackPrice = 20;
 let healthPrice = 20;
@@ -100,10 +101,12 @@ let numberOfCharacter = 1;
 let character1PickStatus = true;
 let character2PickStatus = false;
 let character3PickStatus = false;
+let character4PickStatus = false;
 
 let character1BuyStatus = true;
 let character2BuyStatus = false;
 let character3BuyStatus = false;
+let character4BuyStatus = false;
 //move buttons
 
 goShop.onclick = () => {
@@ -119,6 +122,7 @@ goBackInShop.onclick = () => {
 goHouse.onclick = () => {
   house.style.display = "block";
   shop.style.display = "none";
+  houseChangingCharacter();
 };
 
 //battle
@@ -143,14 +147,13 @@ goBattle.onclick = () => {
   superAttackLoadingNumber = 0;
   superAttackLoader.style.width = "0%";
   superAttackInterval = setInterval(() => {
-    console.log("loading");
     superAttackLoadingNumber += 20;
     superAttackLoader.style.width = `${superAttackLoadingNumber}%`;
     if (superAttackLoadingNumber >= superAttackActivate) {
       btnSuperAttack.style.backgroundColor = "#24db24";
       clearInterval(superAttackInterval);
     }
-  }, 1000);
+  }, superAttackCouldown);
 };
 
 //my attack
@@ -176,7 +179,6 @@ btnAttack.onmouseup = () => {
 //super attack
 btnSuperAttack.onclick = () => {
   if (superAttackLoadingNumber >= superAttackActivate) {
-    console.log("utok");
     enemyHealthInfo.innerHTML -= 5;
 
     btnSuperAttack.style.backgroundColor = "#ff5353";
@@ -184,14 +186,13 @@ btnSuperAttack.onclick = () => {
     superAttackLoader.style.width = "0%";
 
     superAttackInterval = setInterval(() => {
-      console.log("loading");
       superAttackLoadingNumber += 20;
       superAttackLoader.style.width = `${superAttackLoadingNumber}%`;
       if (superAttackLoadingNumber >= superAttackActivate) {
         btnSuperAttack.style.backgroundColor = "#24db24";
         clearInterval(superAttackInterval);
       }
-    }, 1000);
+    }, superAttackCouldown);
     if (enemyHealthInfo.innerHTML <= 0) {
       winInfo.style.display = "flex";
       enemyHealthInfo.innerHTML = 0;
@@ -207,6 +208,14 @@ btnEndWinBattle.onclick = () => {
   battleField.style.display = "none";
   town.style.display = "block";
   winInfo.style.display = "none";
+  
+  enemyHealth = Math.round(enemyHealth * 1.2);
+  console.log(enemyHealth);
+  enemyAttackDamage += 0.5;
+  console.log(enemyAttackDamage);
+  addedMoney = Math.round(addedMoney * 1.3);
+  console.log(addedMoney);
+
   numberOfCoins += addedMoney;
   coinsInfo.innerHTML = numberOfCoins;
 };
@@ -232,7 +241,7 @@ btnBuyBasicAttack.onclick = () => {
 };
 btnBuyHealth.onclick = () => {
   if (numberOfCoins >= healthPrice) {
-    myHealth = Math.round(myHealth * 1.2);
+    myHealth = Math.round(myHealth * 1.4);
 
     numberOfCoins -= healthPrice;
     coinsInfo.innerHTML = numberOfCoins;
@@ -245,6 +254,8 @@ btnBuyHealth.onclick = () => {
 };
 btnBuySuperAttack.onclick = () => {
   if (numberOfCoins >= superAttackPrice) {
+    superAttackDamage +=3;
+
     numberOfCoins -= superAttackPrice;
     coinsInfo.innerHTML = numberOfCoins;
     superAttackLevel.innerHTML++;
@@ -256,6 +267,8 @@ btnBuySuperAttack.onclick = () => {
 };
 btnBuySuperPowerCouldown.onclick = () => {
   if (numberOfCoins >= couldownPrice) {
+    superAttackCouldown-= (superAttackCouldown * 0.1);
+    console.log(superAttackCouldown);
     numberOfCoins -= couldownPrice;
     coinsInfo.innerHTML = numberOfCoins;
     couldownLevel.innerHTML++;
@@ -278,6 +291,8 @@ const houseChangingCharacter = () => {
       characterAttackDamageInfo.innerHTML = 10;
       characterHealthInfo.innerHTML = 30;
       characterSuperAttackDamageInfo.innerHTML = 40;
+      characterInHouse.style.width = "400px";
+      characterInHouse.style.height = "555px";
       characterAbout1.innerHTML =
         "<p>A Fire Wizard is a character who is able to use fire magic to destroy his enemies and protect his allies. He is a powerful and dangerous warrior.</p>";
       characterAbout2.innerHTML =
@@ -295,6 +310,7 @@ const houseChangingCharacter = () => {
         character1PickStatus = true;
         character2PickStatus = false;
         character3PickStatus = false;
+        character4PickStatus = false;
       };
       if (character1BuyStatus == true && character1PickStatus == false) {
         btnPickCharacter.style.display = "block";
@@ -309,6 +325,8 @@ const houseChangingCharacter = () => {
       characterAttackDamageInfo.innerHTML = 5;
       characterHealthInfo.innerHTML = 40;
       characterSuperAttackDamageInfo.innerHTML = 30;
+      characterInHouse.style.width = "400px";
+      characterInHouse.style.height = "555px";
       characterAbout1.innerHTML =
         "<p>The Dark Knight is a powerful and mysterious warrior who is guided by dark forces and uses them to his advantage. His eyes are icy and his gaze chills the blood in the veins.</p>";
       characterAbout2.innerHTML =
@@ -329,6 +347,7 @@ const houseChangingCharacter = () => {
           character2PickStatus = true;
           character1PickStatus = false;
           character3PickStatus = false;
+          character4PickStatus = false;
           character2BuyStatus = true;
         }
       };
@@ -339,6 +358,7 @@ const houseChangingCharacter = () => {
         character2PickStatus = true;
         character1PickStatus = false;
         character3PickStatus = false;
+        character4PickStatus = false;
       };
       if (character2BuyStatus == false) {
         btnBuyCharacter.style.display = "flex";
@@ -357,6 +377,8 @@ const houseChangingCharacter = () => {
       characterAttackDamageInfo.innerHTML = 15;
       characterHealthInfo.innerHTML = 20;
       characterSuperAttackDamageInfo.innerHTML = 30;
+      characterInHouse.style.width = "400px";
+      characterInHouse.style.height = "555px";
       characterAbout1.innerHTML =
         "<p>A bloodthirsty werewolf is a monster with brown fur and pointed fangs. It has a tall and powerful body with short legs and long claws, allowing it to move quickly and accurately.</p>";
       characterAbout2.innerHTML =
@@ -377,6 +399,7 @@ const houseChangingCharacter = () => {
           character3PickStatus = true;
           character1PickStatus = false;
           character2PickStatus = false;
+          character4PickStatus = false;
           character3BuyStatus = true;
         }
       };
@@ -387,6 +410,7 @@ const houseChangingCharacter = () => {
         character3PickStatus = true;
         character1PickStatus = false;
         character2PickStatus = false;
+        character4PickStatus = false;
       };
       if (character3BuyStatus == false) {
         btnBuyCharacter.style.display = "flex";
@@ -400,10 +424,63 @@ const houseChangingCharacter = () => {
       }
 
       break;
-  }
+
+  case 4: //waterwizard
+      characterInHouse.style.backgroundImage = "url(./res/img/waterwizard.png)";
+      characterName.innerHTML = "Water wizard";
+      characterAttackDamageInfo.innerHTML = 20;
+      characterHealthInfo.innerHTML = 15;
+      characterSuperAttackDamageInfo.innerHTML = 40;
+      characterInHouse.style.width = "500px";
+      characterInHouse.style.height = "450px";
+      characterAbout1.innerHTML =
+        "<p>The water wizard is a powerful and mysterious figure who lives in the depths of the oceans and rivers. His strength comes from the element of water and he is able to manipulate its forms, such as waves, storms, and raindrops.</p>";
+      characterAbout2.innerHTML =
+        "<p>His skin is cool and wet, as if always in contact with his element. He has bright blue eyes, deep and clear like the ocean, and his hair is green and flowing like water.</p>";
+      characterAbout3.innerHTML =
+        "<p>He can also control the weather and summon storms and rain showers.</p>";
+      characterAbout4.innerHTML =
+        "<p>His power is immense, but he is also very sensitive to changes in nature and protects it in his element of water.</p>";
+      characterPrice.innerHTML = "700";
+
+      btnBuyCharacter.onclick = () => {
+        if (numberOfCoins > characterPrice.innerHTML) {
+          numberOfCoins -= characterPrice.innerHTML;
+          coinsInfo.innerHTML = numberOfCoins;
+          btnBuyCharacter.style.display = "none";
+          btnPickCharacter.style.display = "none";
+          pickCharacterInfo.style.display = "block";
+          character4PickStatus = true;
+          character1PickStatus = false;
+          character2PickStatus = false;
+          character3PickStatus = false;
+          character4BuyStatus = true;
+        }
+      };
+      btnPickCharacter.onclick = () => {
+        btnBuyCharacter.style.display = "none";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "block";
+        character4PickStatus = true;
+        character1PickStatus = false;
+        character2PickStatus = false;
+        character3PickStatus = false;
+      };
+      if (character4BuyStatus == false) {
+        btnBuyCharacter.style.display = "flex";
+        btnPickCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+      if (character4BuyStatus == true && character4PickStatus == false) {
+        btnPickCharacter.style.display = "block";
+        btnBuyCharacter.style.display = "none";
+        pickCharacterInfo.style.display = "none";
+      }
+
+      break;}
 };
 changeCharacterRight.onclick = () => {
-  if (numberOfCharacter == 3) {
+  if (numberOfCharacter == 4) {
     numberOfCharacter = 1;
   } else {
     numberOfCharacter++;
@@ -412,7 +489,7 @@ changeCharacterRight.onclick = () => {
 };
 changeCharacterLeft.onclick = () => {
   if (numberOfCharacter == 1) {
-    numberOfCharacter = 3;
+    numberOfCharacter = 4;
   } else {
     numberOfCharacter--;
   }
@@ -429,16 +506,29 @@ goBackInHouse.onclick = () => {
   if (character1PickStatus == true) {
     [...characters].forEach((character) => {
       character.style.backgroundImage = "url(./res/img/wizard.png)";
+      character.style.width = "400px";
+      character.style.height = "555px";
     });
   }
   if (character2PickStatus == true) {
     [...characters].forEach((character) => {
       character.style.backgroundImage = "url(./res/img/warrior.png)";
+      character.style.width = "400px";
+      character.style.height = "555px";
     });
   }
   if (character3PickStatus == true) {
     [...characters].forEach((character) => {
       character.style.backgroundImage = "url(./res/img/werewolf.png)";
+      character.style.width = "400px";
+      character.style.height = "555px";
+    });
+  }
+  if (character4PickStatus == true) {
+    [...characters].forEach((character) => {
+      character.style.backgroundImage = "url(./res/img/waterwizard.png)";
+      character.style.width = "500px";
+      character.style.height = "450px";
     });
   }
 };
