@@ -90,7 +90,7 @@ let superAttackLoadingNumber = 0;
 let superAttackActivate = 100;
 //money
 let addedMoney = 10;
-let numberOfCoins = 10000;
+let numberOfCoins = 0;
 //shop prices
 let attackPrice = 20;
 let healthPrice = 20;
